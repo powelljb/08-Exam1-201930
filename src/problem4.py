@@ -87,7 +87,7 @@ def problem4(point1, point2, n, window):
     point1.attach_to(window)
     window.render()
     point2.attach_to(window)
-    window.render()
+    window.render(1)
     a = point1.x
     b = point2.x
     c = point1.y
@@ -98,10 +98,13 @@ def problem4(point1, point2, n, window):
 
     for k in range(2*n):
 
-        point1.x = point1.x + ((b - a)/n/2)
-        point1.y = point1.y + ((d - c)/n/2)
+        point1.x = point1.x + ((b-a)/n/2)
+        point1.y = point1.y + ((d-c)/n/2)
         point3 = rg.Point(point1.x,point1.y)
-        print(point3)
+        if k >= n:
+            point3.fill_color = point2.fill_color
+        else:
+            point3.fill_color = point1.fill_color
         point3.attach_to(window)
         window.render()
 
