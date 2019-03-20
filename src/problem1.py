@@ -3,13 +3,13 @@ Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Jake Powell.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 # -----------------------------------------------------------------------------
-# TODO: 2. Right-click on the  src  folder and
+# DONE: 2. Right-click on the  src  folder and
 #              Mark Directory as ... Sources Root,
 #          if you have not already done so.
 # -----------------------------------------------------------------------------
@@ -118,9 +118,46 @@ def problem1(circle, rectangle, color, length, window):
       :type window:    rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    circle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    rectangle.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    center1 = circle.center
+    center2 = rectangle.get_center()
+    a = abs(center1.x-center2.x)
+    jake = rg.Line(center1,center2)
+    jake.color = color
+    thickness1 = rectangle.outline_thickness
+    thickness2 = circle.outline_thickness
+    jake.thickness = thickness1
+    jake.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
+    midpoint = jake.get_midpoint()
+    start = rg.Point(midpoint.x,midpoint.y + length/2)
+    end = rg.Point(midpoint.x,midpoint.y - length/2)
+    jake2 = rg.Line(start,end)
+    jake2.thickness = thickness2 + thickness1
+    jake2.color = circle.fill_color
+    jake2.attach_to(window)
+    window.render()
+
+    # start = rg.Point(center1.x+a,center1.y+ length)
+    # end = rg.Point(center1.x - a,center1.y + length)
+    # jake2 = rg.Line(start,end)
+    # jake2.thickness = thickness1 + thickness2
+    # jake2.attach_to(window)
+    # window.render()
+
+
+
+
+
 
 
 # -----------------------------------------------------------------------------
